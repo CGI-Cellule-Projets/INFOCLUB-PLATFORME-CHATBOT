@@ -1,4 +1,4 @@
-# 🎓 University Club API
+# DATABASE ARCHiTECTURE 
 
 A backend built with **FastAPI** + **SQLModel** + **MySQL**.
 
