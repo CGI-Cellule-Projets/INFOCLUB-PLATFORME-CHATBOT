@@ -17,6 +17,10 @@ app = FastAPI(title="InfoClub AI API", description="RAG Chatbot for Team Atlas")
 class QuestionRequest(BaseModel):
     question: str
 
+class MemoryAddRequest(BaseModel):
+    title: str
+    content: str
+
 # 4. Load the memory and the Gemini AI model
 print("Loading AI memory and Gemini model...")
 embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
@@ -58,7 +62,6 @@ rag_chain = (
     | StrOutputParser()
 )
 
-# 7. Create the API Endpoint
 @app.post("/ask")
 async def ask_question(request: QuestionRequest):
     try:
@@ -67,6 +70,25 @@ async def ask_question(request: QuestionRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/memory/add")
+async def add_memory(request: MemoryAddRequest):
+    """
+    Endpoint for syncing new blogs with the existing FAISS index real-time.
+    """
+    from langchain_core.documents import Document
+    global vector_store
+    
+    try:
+        doc = Document(
+            page_content=f"Title: {request.title}\n{request.content}", 
+            metadata={"source": "blog"}
+        )
+        vector_store.add_documents([doc])
+        vector_store.save_local("ensa_faiss_index")
+        return {"status": "success", "message": "Local FAISS vector store updated successfully!"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8001)

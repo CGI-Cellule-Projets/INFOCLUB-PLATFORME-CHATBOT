@@ -11,12 +11,6 @@ venv.bak/
 __pycache__/
 *.py[cod]
 *$py.class
-
-# FAISS Vector Database
-ensa_faiss_index/
-*.faiss
-*.pkl
-
 # VS Code / IDEs
 .vscode/
 .idea/

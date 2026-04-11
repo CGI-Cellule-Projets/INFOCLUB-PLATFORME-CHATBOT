@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import Session, select
-from typing import List
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlmodel import Session, select, extract
+from typing import List, Optional
 
 from core.database import get_session
 from models.models import (
@@ -28,9 +28,19 @@ def create_event(
 
 
 @router.get("/", response_model=List[EventRead], summary="List all events")
-def list_events(session: Session = Depends(get_session),
-                _: Member = Depends(get_current_member)):
-    return session.exec(select(Event)).all()
+def list_events(
+    type: Optional[str] = Query(None, description="Filter by event type (e.g. workshop, ctf)"),
+    month: Optional[int] = Query(None, description="Filter by month (1-12)"),
+    session: Session = Depends(get_session),
+    _: Member = Depends(get_current_member)
+):
+    query = select(Event)
+    if type:
+        query = query.where(Event.event_type == type)
+    if month:
+        query = query.where(extract('month', Event.starts_at) == month)
+        
+    return session.exec(query).all()
 
 
 @router.get("/{event_id}", response_model=EventRead)

@@ -4,10 +4,11 @@ from sqlmodel import Session, select
 from typing import List
 
 from core.database import get_session
+from core.memory import add_blog_to_memory
 from models.models import Post, PostCreate, PostRead, PostUpdate, Member
 from routers.auth import get_current_member, require_head, require_mod_or_head
 
-router = APIRouter(prefix="/posts", tags=["📝 Posts"])
+router = APIRouter(prefix="/blogs", tags=["📝 Blogs"])
 
 
 @router.post("/", response_model=PostRead, status_code=201,
@@ -21,6 +22,10 @@ def create_post(
     session.add(post)
     session.commit()
     session.refresh(post)
+    
+    # Write one extra line of code inside that route to trigger your add_blog_to_memory() function
+    add_blog_to_memory(post.title, post.content)
+    
     return post
 
 

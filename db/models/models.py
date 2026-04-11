@@ -98,12 +98,13 @@ class MemberUpdate(SQLModel):
 # ══════════════════════════════════════════════════════
 
 class EventBase(SQLModel):
-    title:         str            = Field(index=True)
+    title:         str            = Field(index=True, min_length=3)
     description:   Optional[str] = None
     location:      Optional[str] = None
     starts_at:     datetime
     ends_at:       Optional[datetime] = None
     status:        EventStatus    = Field(default=EventStatus.upcoming)
+    event_type:    Optional[str]  = None
     max_attendees: Optional[int]  = None   # None = unlimited
 
 
@@ -173,8 +174,8 @@ class AttendanceRead(SQLModel):
 # ══════════════════════════════════════════════════════
 
 class PostBase(SQLModel):
-    title:     str           = Field(index=True)
-    content:   str                             # full blog body
+    title:     str           = Field(index=True, min_length=3)
+    content:   str           = Field(min_length=10)                  # full blog body
     image_url: Optional[str] = None            # optional cover image
     is_published: bool       = Field(default=False)
 
