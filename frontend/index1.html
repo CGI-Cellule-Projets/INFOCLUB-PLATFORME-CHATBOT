@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INFOCLUB</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="index1.html" class="nav-brand"><span><i class="fas fa-cube"></i></span> INFOCLUB</a>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="index1.html" class="active">Accueil</a>
+      <a href="blog.html">Actualités</a>
+      <a href="events.html">Événements</a>
+      <a href="team.html">Équipe</a>
+      <a href="contact.html">Contact</a>
+      <div id="auth-links" style="display: flex; gap: 0.5rem; align-items: center;">
+        <a href="login.html" class="btn btn-outline" id="login-link">Connexion</a>
+      </div>
+    </nav>
+
+    <button class="hamburger" id="hamburger">☰</button>
+  </header>
+
+  <main>
+    <div class="max-width">
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div class="hero-text">
+          <p class="hero-tag">Club Informatique Universitaire</p>
+          <h1><span>Apprends.</span><br>Crée.<br>Innove.</h1>
+          <p class="hero-sub">
+            InfoClub est la plus grande communauté de passionnés de tech à l'université.
+            Rejoins-nous pour transformer tes idées en projets concrets.
+          </p>
+          <div class="hero-btns">
+            <a href="#features" class="btn btn-primary">Découvrir</a>
+            <a href="contact.html" class="btn btn-outline">Nous rejoindre</a>
+          </div>
+        </div>
+
+        <div class="hero-img">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+            alt="InfoClub Team Collaboration" />
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="features" id="features">
+        <div class="section-header">
+          <p class="section-tag">Pourquoi nous rejoindre</p>
+          <h2>Construis ton avenir avec nous</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Ateliers & Workshops</h3>
+            <p>Sessions pratiques chaque semaine sur le dev web, l'IA, la cybersécurité et plus.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
+            <h3>Projets Collaboratifs</h3>
+            <p>Travaille en équipe sur des projets open-source et réels pour booster ton portfolio.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+            <h3>Événements & Hackathons</h3>
+            <p>Participe à des hackathons et compétitions avec le soutien stratégique du club.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-robot"></i></div>
+            <h3>Assistant IA Dédié</h3>
+            <p>Notre chatbot intelligent est là pour t'orienter et répondre à tes questions 24/7.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="max-width">
+      <div class="footer-inner">
+        <div class="footer-column">
+          <span class="footer-brand">◈ InfoClub</span>
+          <p class="footer-desc">
+            Le point de rencontre des esprits innovants et des passionnés de technologie.
+            Ensemble, nous façonnons l'informatique de demain.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <nav class="footer-links">
+            <a href="index1.html">Accueil</a>
+            <a href="blog.html">Actualités</a>
+            <a href="events.html">Événements</a>
+          </nav>
+        </div>
+        <div class="footer-column">
+          <h4>Communauté</h4>
+          <nav class="footer-links">
+            <a href="team.html">L'Équipe</a>
+            <a href="contact.html">Nous contacter</a>
+            <a href="#">Réseaux sociaux</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© <span id="footer-year">2024</span> InfoClub. Tous droits réservés.</span>
+        <div class="footer-legal">
+          <a href="#">Confidentialité</a> • <a href="#">Mentions légales</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT WIDGET -->
+  <button class="chatbot-trigger" id="chatbot-trigger">
+    <span class="chat-icon"><i class="fas fa-comments"></i></span>
+    <span class="close-icon"><i class="fas fa-times"></i></span>
+  </button>
+
+  <div class="chatbot-popup" id="chatbot-popup">
+    <div class="chat-header">
+      <div class="header-text">
+        <h3>InfoClub AI</h3>
+        <p>En ligne • Assistant intelligent</p>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <!-- Messages appear here -->
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chat-input" placeholder="Posez une question..." autocomplete="off">
+      <button class="chat-send" id="chat-send">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+
+</html>
