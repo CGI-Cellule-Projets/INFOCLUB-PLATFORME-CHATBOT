@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - INFOCLUB</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .blog-hero {
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+
+    .post-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    .post-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80');
+    }
+
+    .post-body {
+      padding: 1.5rem;
+      flex: 1;
+    }
+
+    .post-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .post-meta i {
+      color: var(--accent);
+    }
+
+    .post-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .like-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .like-btn:hover {
+      color: #f43f5e;
+    }
+
+    .like-btn.active {
+      color: #f43f5e;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="max-width">
+      <section class="blog-hero">
+        <p class="section-tag"
+          style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">
+          Actualités</p>
+        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem;">Le Mag Club Génie Informatique</h1>
+        <p style="color: var(--muted); max-width: 600px; margin: 0 auto;">Retrouve les dernières news du club, des
+          tutoriels tech et les retours sur nos événements.</p>
+      </section>
+
+      <div id="posts-loading" style="text-align: center; padding: 4rem;">
+        <i class="fas fa-spinner fa-spin fa-2x" style="color: var(--accent);"></i>
+        <p style="margin-top: 1rem; color: var(--muted);">Chargement des articles...</p>
+      </div>
+
+      <div id="posts-container" class="blog-grid" style="display: none; margin-bottom: 32px;">
+        <!-- Posts appear here -->
+      </div>
+
+      <div id="posts-empty" style="display: none; text-align: center; padding: 4rem;">
+        <i class="fas fa-newspaper fa-3x" style="color: var(--border); margin-bottom: 1.5rem;"></i>
+        <h3>Aucun article publié pour le moment</h3>
+        <p style="color: var(--muted); margin-top: 0.5rem;">Reviens bientôt pour lire nos premiers articles !</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <div id="chatbot-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+
+</html>

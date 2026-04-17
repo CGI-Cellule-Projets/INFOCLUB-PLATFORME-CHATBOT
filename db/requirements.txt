@@ -1,9 +1,0 @@
-fastapi
-uvicorn[standard]
-sqlmodel
-pymysql
-cryptography
-passlib[bcrypt]
-python-jose[cryptography]
-python-multipart
-python-dotenv

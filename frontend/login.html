@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion - INFOCLUB</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="max-width">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h2>Bon retour !</h2>
+          <p>Connecte-toi à ton compte InfoClub</p>
+        </div>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="nom@exemple.com" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+          </div>
+          <div id="login-error" style="color: #ef4444; font-size: 0.875rem; margin-bottom: 1rem; display: none;"></div>
+          <button type="submit" class="btn btn-primary" id="login-btn">
+            Se connecter <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted);">
+          Pas encore membre ? <a href="register.html"
+            style="color: var(--accent); text-decoration: none; font-weight: 600;">Rejoins-nous</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <div id="chatbot-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html>

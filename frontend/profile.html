@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil - INFOCLUB</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .profile-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .info-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .info-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .info-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .badge-status {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    .status-active {
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+    }
+
+    .status-inactive {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="max-width">
+      <div class="profile-header">
+        <div class="profile-avatar" id="profile-initials">?</div>
+        <h1 id="profile-name">Chargement...</h1>
+        <div id="profile-status-badge"></div>
+      </div>
+
+      <div class="profile-grid">
+        <!-- Sidebar: Basic Info -->
+        <aside>
+          <div class="card">
+            <h3 style="margin-bottom: 1.5rem;"><i class="fas fa-id-card"></i> Mes Informations</h3>
+            <div class="info-group">
+              <p class="info-label">Email</p>
+              <p class="info-value" id="info-email">...</p>
+            </div>
+            <div class="info-group">
+              <p class="info-label">Rôle</p>
+              <p class="info-value" id="info-role" style="text-transform: capitalize;">...</p>
+            </div>
+            <div class="info-group">
+              <p class="info-label">Membre depuis</p>
+              <p style="text-transform: capitalize;" class="info-value" id="info-student-id">...</p>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content: Edit Form -->
+        <div class="profile-main">
+          <div class="card">
+            <h3 style="margin-bottom: 1.5rem;"><i class="fas fa-user-edit"></i> Modifier mon profil</h3>
+            <form id="profile-form">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label>Nom complet</label>
+                  <input type="text" id="p-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Téléphone</label>
+                  <input type="tel" id="p-phone" class="form-control">
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label>Filière (Major)</label>
+                  <input type="text" id="p-major" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Année d'étude</label>
+                  <select id="p-year" class="form-control">
+                    <option value="1">1ère année</option>
+                    <option value="2">2ème année</option>
+                    <option value="3">3ème année</option>
+                    <option value="4">4ème année</option>
+                    <option value="5">5ème année</option>
+                  </select>
+                </div>
+              </div>
+              <div style="margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary" id="save-btn">Mettre à jour mon profil</button>
+                <p id="profile-msg" style="margin-top: 1rem; font-size: 0.9rem;"></p>
+              </div>
+            </form>
+          </div>
+
+          <div class="card" style="margin-top: 2rem;">
+            <h3 style="margin-bottom: 1rem;"><i class="fas fa-calendar-check"></i> Mes Inscriptions</h3>
+            <div id="my-events" style="color: var(--muted); font-size: 0.9rem;">
+              Chargement de vos participations...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <div id="chatbot-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+
+</html>

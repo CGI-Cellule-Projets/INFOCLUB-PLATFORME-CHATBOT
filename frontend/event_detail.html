@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Détails de l'Événement - INFOCLUB</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .event-detail-header {
+      padding: 4rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .event-banner {
+      height: 400px;
+      background: var(--accent-gradient);
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 5rem;
+      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .event-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .meta-box {
+      background: var(--surface);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .meta-box i {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .meta-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-value {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 0.25rem;
+    }
+
+    .event-full-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text);
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 768px) {
+      .event-meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .event-banner {
+        height: 250px;
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="max-width">
+      <div id="detail-loading" style="text-align: center; padding: 10rem 0;">
+        <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--accent);"></i>
+        <p style="margin-top: 1.5rem; color: var(--muted);">Chargement de l'événement...</p>
+      </div>
+
+      <div id="detail-error" style="display: none; text-align: center; padding: 10rem 0;">
+        <i class="fas fa-exclamation-triangle fa-3x" style="color: #ef4444; margin-bottom: 1rem;"></i>
+        <h3>Événement introuvable</h3>
+        <p style="color: var(--muted); margin-top: 0.5rem;">L'événement que vous recherchez n'existe pas ou a été
+          archivé.</p>
+        <a href="events.html" class="btn btn-outline" style="margin-top: 2rem;">Retour aux événements</a>
+      </div>
+
+      <div id="detail-content" style="display: none;">
+        <div class="event-detail-header">
+          <span id="d-tag" class="event-tag"
+            style="padding: 0.4rem 0rem; text-transform: uppercase; font-weight: 700; color: var(--accent);">WORKSHOP</span>
+          <h1 id="d-title" style="font-size: 3.5rem; font-weight: 800; margin: 1rem 0; letter-spacing: -0.02em;">Titre
+            de l'événement</h1>
+          <p id="d-header-info" style="color: var(--muted); font-size: 1.2rem;"><i class="fas fa-map-marker-alt"
+              style="color: var(--accent);"></i> Salle 104, Campus Central</p>
+        </div>
+
+        <div class="event-banner" id="d-banner">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+
+        <div class="event-meta-grid">
+          <div class="meta-box">
+            <i class="fas fa-clock"></i>
+            <div class="meta-label">Date & Heure</div>
+            <div class="meta-value" id="d-date">Lundi 12 Mai, 18:00</div>
+          </div>
+          <div class="meta-box">
+            <i class="fas fa-users"></i>
+            <div class="meta-label">Disponibilité</div>
+            <div class="meta-value" id="d-seats">30 Places restantes</div>
+          </div>
+          <div class="meta-box">
+            <i class="fas fa-ticket-alt"></i>
+            <div class="meta-label">Participation</div>
+            <div id="d-action-container">
+              <button id="rsvp-btn" class="btn btn-primary" style="width: auto; padding: 0.5rem 1.5rem;">S'inscrire
+                maintenant</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 3rem; margin-bottom: 4rem;">
+          <h3 style="margin-bottom: 2rem; border-left: 4px solid var(--accent); padding-left: 1rem;">Description de
+            l'événement</h3>
+          <div class="event-full-desc" id="d-desc">
+            Contenu détaillé...
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <div id="chatbot-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/event_detail.js"></script>
+</body>
+
+</html>

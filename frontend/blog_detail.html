@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article - INFOCLUB</title>
+    <link rel="stylesheet" href="css/shell.css" />
+    <link rel="stylesheet" href="css/chatbot.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        .post-detail-header {
+            padding: 6rem 0 3rem;
+            text-align: center;
+        }
+
+        .post-cover-img {
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--radius);
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .post-content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        .post-content-container h2 {
+            margin: 2rem 0 1rem;
+            color: var(--accent);
+        }
+
+        .post-content-container p {
+            margin-bottom: 1.5rem;
+            color: var(--muted);
+        }
+
+        .post-actions-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .post-action-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .post-action-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .post-action-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .post-cover-img {
+                height: 300px;
+            }
+
+            .post-detail-header {
+                padding: 4rem 0 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="max-width">
+            <div id="post-loading" style="text-align: center; padding: 10rem 0;">
+                <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--accent);"></i>
+                <p style="margin-top: 1.5rem; color: var(--muted);">Chargement de l'article...</p>
+            </div>
+
+            <div id="post-error" style="display: none; text-align: center; padding: 10rem 0;">
+                <i class="fas fa-exclamation-triangle fa-3x" style="color: #ef4444; margin-bottom: 1rem;"></i>
+                <h3>Article introuvable</h3>
+                <p style="color: var(--muted); margin-top: 0.5rem;">Cet article n'existe plus ou a été retiré.</p>
+                <a href="blog.html" class="btn btn-outline" style="margin-top: 2rem;">Retour au blog</a>
+            </div>
+
+            <div
+                style="padding-top: 6rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+                <a href="blog.html"
+                    style="color: var(--accent); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.3s ease;"
+                    onmouseover="this.style.transform='translateX(-5px)'"
+                    onmouseout="this.style.transform='translateX(0)'">
+                    <i class="fas fa-arrow-left"></i> Retour au blog
+                </a>
+                <button id="post-like-icon-top"
+                    style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--muted); width: 42px; height: 42px; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-heart"></i>
+                </button>
+            </div>
+
+            <div id="post-content-area" style="display: none;">
+                <div class="post-detail-header"
+                    style="background: linear-gradient(to bottom, rgba(99, 102, 241, 0.05), transparent); border-radius: var(--radius); padding: 4rem 2rem; border: 1px solid rgba(99, 102, 241, 0.1); margin-bottom: 3rem;">
+                    <h1 id="post-title"
+                        style="font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; letter-spacing: -0.03em; background: linear-gradient(135deg, #fff 0%, #a5a6f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        Titre de l'article</h1>
+                    <div class="post-meta"
+                        style="display: flex; justify-content: center; align-items: center; gap: 2.5rem; font-size: 1.1rem; color: var(--muted); font-weight: 500; flex-wrap: wrap;">
+                        <span id="post-date" style="display: flex; align-items: center; gap: 0.6rem;"><i
+                                class="fas fa-calendar-alt" style="color: var(--accent);"></i> 12 Mai 2024</span>
+                        <span id="post-author" style="display: flex; align-items: center; gap: 0.6rem;"><i
+                                class="fas fa-user-circle" style="color: #10b981;"></i> Admin</span>
+                        <span id="post-views" style="display: flex; align-items: center; gap: 0.6rem;"><i
+                                class="fas fa-eye" style="color: #6366f1;"></i> 0 vues</span>
+                    </div>
+                </div>
+
+                <div class="post-cover-img" id="post-banner"></div>
+
+                <div class="post-content-container" id="post-body">
+                    <!-- Article body -->
+                </div>
+
+                <div class="post-actions-bar"
+                    style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; border-top: 1px solid var(--border); margin-top: 5rem; padding-top: 3rem;">
+                    <p style="font-weight: 700; color: var(--text); font-size: 1.1rem;">Trouvez-vous cet article utile ?
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" id="feedback-yes-btn"
+                            style="width: auto; padding: 0.6rem 2rem;">Oui, tout à fait !</button>
+                        <button class="btn btn-outline"
+                            onclick="this.parentElement.parentElement.innerHTML = '<p style=\'color: var(--muted);\'>Merci pour votre retour !</p>'"
+                            style="width: auto; padding: 0.6rem 2rem;">Pas vraiment</button>
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--muted); margin-top: 1rem;">
+                        <i class="fas fa-heart" style="color: var(--accent);"></i> <span id="post-like-count">0</span>
+                        personnes ont aimé cet article
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="chatbot-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/blog_detail.js"></script>
+</body>
+
+</html>

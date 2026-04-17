@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INFOCLUB - Future of Technology</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* New Section Styles */
+    .stats-section {
+      padding: 4rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .stat-item h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-item p {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .cta-banner {
+      padding: 8rem 0;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .team-teaser {
+      padding: 8rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .team-teaser-img {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .team-teaser-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .team-teaser {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .team-teaser-img {
+        order: 2;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <!-- HERO -->
+    <section class="max-width hero">
+      <div class="hero-text">
+        <span class="hero-tag">Ensa Marrakech • Club Génie Informatique</span>
+        <h1>Forgeons l'avenir par le <span>Code.</span></h1>
+        <p class="hero-sub">
+          Plonge au cœur de l'innovation avec le CGI. De l'informatique à l'intelligence artificielle, construis tes
+          compétences au sein de la plus grande communauté tech de l'ENSA.
+        </p>
+        <div class="hero-btns">
+          <a href="#features" class="btn btn-primary">Découvrir</a>
+          <a href="login.html" class="btn btn-outline">Nous rejoindre</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+          alt="Tech Community" />
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section">
+      <div class="max-width stats-grid">
+        <div class="stat-item">
+          <h2>+100</h2>
+          <p>Membres</p>
+        </div>
+        <div class="stat-item">
+          <h2>15+</h2>
+          <p>Événements Annuels</p>
+        </div>
+        <div class="stat-item">
+          <h2>20+</h2>
+          <p>Partenaires Tech</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION/FEATURES -->
+    <section id="features" class="max-width features">
+      <div class="section-header">
+        <span class="section-tag">Notre Mission</span>
+        <h2>L'excellence par la pratique</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Workshops Techniques</h3>
+          <p>Apprentissage par la pratique sur les dernières techno : React, Python, Docker et IA.</p>
+          <a href="blog.html"
+            style="color: var(--accent); font-size: 0.8rem; text-decoration: none; margin-top: 1rem; display: inline-block;">Lire
+            les roadmaps <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-microchip"></i></div>
+          <h3>Hackathons & Compéts</h3>
+          <p>Testez vos limites lors de nuits de coding intensives et de compétitions algorithmiques.</p>
+          <a href="events.html"
+            style="color: var(--accent); font-size: 0.8rem; text-decoration: none; margin-top: 1rem; display: inline-block;">Prochains
+            challenges <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+          <h3>Réseautage Pro</h3>
+          <p>Connectez-vous avec des experts du secteur et des entreprises à travers nos summits.</p>
+          <a href="team.html"
+            style="color: var(--accent); font-size: 0.8rem; text-decoration: none; margin-top: 1rem; display: inline-block;">L'équipe
+            CGI <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM TEASER -->
+    <section class="max-width team-teaser">
+      <div class="team-teaser-img">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+          alt="Team Work" />
+      </div>
+      <div class="team-teaser-text">
+        <span class="section-tag">Une Équipe Passionnée</span>
+        <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem;">Derrière chaque projet, des visages.
+        </h2>
+        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 2rem;">
+          Notre bureau exécutif travaille sans relâche pour créer des opportunités uniques pour chaque étudiant.
+          Découvrez qui gère le CGI et comment nous pouvons vous aider à grandir.
+        </p>
+        <a href="team.html" class="btn btn-outline">Rencontrer le Bureau <i class="fas fa-users"></i></a>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+      <div class="max-width cta-content">
+        <h2 style="font-size: 3rem; font-weight: 900; margin-bottom: 1.5rem;">Prêt à coder le futur ?</h2>
+        <p style="color: var(--muted); font-size: 1.25rem; margin-bottom: 3rem;">
+          Rejoignez INFOCLUB dès aujourd'hui et faites partie d'un écosystème qui ne dort jamais.
+        </p>
+        <a href="login.html" class="btn btn-primary">Postuler Maintenant</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <div id="chatbot-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+
+</html>

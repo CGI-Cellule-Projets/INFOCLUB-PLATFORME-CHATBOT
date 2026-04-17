@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: infoclub_db
+    environment:
+      MYSQL_DATABASE: "infoclub"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "infopass"
+      MYSQL_ROOT_PASSWORD: "infopass"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: infoclub_backend
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=infoclub
+      - DB_USER=admin
+      - DB_PASSWORD=infopass
+      - GOOGLE_API_KEY=AIzaSyCNHqgQ6yOd1unZu7LwSvcLshpoV7z25MA
+      - SECRET_KEY=change-this-to-a-long-random-string
+    ports:
+      - "8000:8000"
+
+volumes:
+  mysql_data:

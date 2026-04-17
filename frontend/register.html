@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rejoindre - INFOCLUB</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="max-width">
+      <div class="auth-container" style="max-width: 600px;">
+        <div class="auth-header">
+          <h2>Deviens Membre</h2>
+          <p>Rejoins la plus grande communauté tech de l'université</p>
+        </div>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="full_name">Nom Complet</label>
+            <input type="text" id="full_name" class="form-control" placeholder="Jean Dupont" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Universitaire</label>
+            <input type="email" id="email" class="form-control" placeholder="jean.dupont@univ.fr" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="form-control" placeholder="••••••••" required minlength="8">
+          </div>
+
+          <div id="register-error" style="color: #ef4444; font-size: 0.875rem; margin-bottom: 1rem; display: none;">
+          </div>
+          <button type="submit" class="btn btn-primary" id="register-btn">
+            Créer mon compte <i class="fas fa-user-plus"></i>
+          </button>
+        </form>
+        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted);">
+          Déjà membre ? <a href="login.html"
+            style="color: var(--accent); text-decoration: none; font-weight: 600;">Connecte-toi</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <div id="chatbot-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html>

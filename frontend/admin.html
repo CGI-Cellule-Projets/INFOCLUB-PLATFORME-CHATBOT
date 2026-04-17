@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administration - INFOCLUB</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="admin-page">
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="max-width">
+      <div class="admin-grid">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+          <div class="admin-nav">
+            <a class="admin-nav-item active" data-tab="members">
+              <i class="fas fa-users"></i> Membres
+            </a>
+            <a class="admin-nav-item" data-tab="events">
+              <i class="fas fa-calendar-alt"></i> Événements
+            </a>
+            <a class="admin-nav-item" data-tab="posts">
+              <i class="fas fa-newspaper"></i> Articles
+            </a>
+          </div>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="admin-content">
+
+          <!-- MEMBERS TAB -->
+          <section id="tab-members" class="tab-pane active">
+            <div class="card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.5rem; font-weight: 800;">Gestion des Membres</h2>
+                <div id="member-stats" style="font-size: 0.9rem; color: var(--muted);"></div>
+              </div>
+              <div class="table-container">
+                <table id="members-table">
+                  <thead>
+                    <tr>
+                      <th>Membre</th>
+                      <th>Infos</th>
+                      <th>Status</th>
+                      <th>Rôle</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="members-tbody">
+                    <!-- Rows appear here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- EVENTS TAB -->
+          <section id="tab-events" class="tab-pane" style="display: none;">
+            <div class="card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.5rem; font-weight: 800;">Événements</h2>
+                <button class="btn btn-primary" style="width: auto; padding: 0.5rem 1.25rem;"
+                  onclick="openModal('event-modal')">
+                  <i class="fas fa-plus"></i> Nouvel Événement
+                </button>
+              </div>
+              <div class="table-container">
+                <table id="events-table">
+                  <thead>
+                    <tr>
+                      <th>Événement</th>
+                      <th>Date</th>
+                      <th>Lieu</th>
+                      <th>Type</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="events-tbody">
+                    <!-- Rows appear here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- POSTS TAB -->
+          <section id="tab-posts" class="tab-pane" style="display: none;">
+            <div class="card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.5rem; font-weight: 800;">Articles de Blog</h2>
+                <button class="btn btn-primary" style="width: auto; padding: 0.5rem 1.25rem;"
+                  onclick="openModal('post-modal')">
+                  <i class="fas fa-plus"></i> Nouvel Article
+                </button>
+              </div>
+              <div class="table-container">
+                <table id="posts-table">
+                  <thead>
+                    <tr>
+                      <th>Titre</th>
+                      <th>Statut</th>
+                      <th>Stats</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="posts-tbody">
+                    <!-- Rows appear here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL: ADD EVENT -->
+  <div id="event-modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('event-modal')">&times;</button>
+      <h3 id="event-modal-title" style="margin-bottom: 1.5rem;">Créer un événement</h3>
+      <form id="event-form">
+        <input type="hidden" id="ev-id">
+        <div class="form-group">
+          <label>Titre de l'événement</label>
+          <input type="text" id="ev-title" class="form-control" required placeholder="Workshop IA">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label>Date & Heure</label>
+            <input type="datetime-local" id="ev-start" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Lieu / Lien</label>
+            <input type="text" id="ev-location" class="form-control" placeholder="Amphi A">
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label>Type d'événement</label>
+            <select id="ev-type" class="form-control">
+              <option value="workshop">Atelier / Workshop</option>
+              <option value="talk">Conférence</option>
+              <option value="hackathon">Hackathon</option>
+              <option value="social">Social / Fun</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Places limitées ?</label>
+            <input type="number" id="ev-max" class="form-control" placeholder="Laisse vide pour illimité">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Image de l'événement (Locale)</label>
+          <input type="file" id="ev-file" class="form-control" accept="image/*">
+          <input type="hidden" id="ev-image">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="ev-desc" class="form-control" rows="4" placeholder="Détails de l'événement..."></textarea>
+        </div>
+        <button type="submit" id="ev-submit" class="btn btn-primary">Enregistrer l'événement</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD POST -->
+  <div id="post-modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('post-modal')">&times;</button>
+      <h3 id="post-modal-title" style="margin-bottom: 1.5rem;">Publier un article</h3>
+      <form id="post-form">
+        <input type="hidden" id="p-id">
+        <div class="form-group">
+          <label>Titre de l'article</label>
+          <input type="text" id="p-title" class="form-control" required placeholder="L'IA en 2024">
+        </div>
+        <div class="form-group">
+          <label>Image de couverture (Locale)</label>
+          <input type="file" id="p-file" class="form-control" accept="image/*">
+          <input type="hidden" id="p-image">
+        </div>
+        <div class="form-group">
+          <label>Contenu de l'article</label>
+          <textarea id="p-content" class="form-control" rows="10" required
+            placeholder="Corps de l'article (Markdown supporté)..."></textarea>
+        </div>
+        <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+          <input type="checkbox" id="p-published" style="width: 18px; height: 18px;">
+          <label for="p-published" style="margin-bottom: 0;">Publier immédiatement</label>
+        </div>
+        <button type="submit" id="p-submit" class="btn btn-primary">Publier l'article</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: VIEW ATTENDEES -->
+  <div id="attendees-modal" class="modal">
+    <div class="modal-content" style="max-width: 600px;">
+      <button class="modal-close" onclick="closeModal('attendees-modal')">&times;</button>
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-right: 2rem;">
+        <h3 id="attendees-title" style="margin-bottom: 0;">Participants à l'événement</h3>
+        <button id="download-csv-btn" class="btn btn-outline"
+          style="width: auto; font-size: 0.8rem; padding: 0.4rem 0.8rem; display: none;">
+          <i class="fas fa-file-csv"></i> Télécharger CSV
+        </button>
+      </div>
+      <div id="attendees-list" style="max-height: 400px; overflow-y: auto;">
+        <!-- Attendee list appears here -->
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <div id="chatbot-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

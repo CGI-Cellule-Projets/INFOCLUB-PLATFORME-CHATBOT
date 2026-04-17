@@ -1,0 +1,27 @@
+<button class="chatbot-trigger" id="chat-toggle">
+    <span class="chat-icon"><i class="fas fa-comments"></i></span>
+    <span class="close-icon"><i class="fas fa-times"></i></span>
+</button>
+
+<div class="chatbot-popup" id="chatbot-popup">
+    <div class="chat-header">
+        <div class="header-text">
+            <h3>InfoClub AI</h3>
+            <p>Expert Club • En ligne</p>
+        </div>
+        <button id="chat-close" style="background:none; border:none; color:var(--muted); cursor:pointer; margin-left:auto;">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+        <!-- Messages appear here -->
+    </div>
+    <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chat-input" placeholder="Posez une question..." autocomplete="off">
+        <button class="chat-send" id="chat-send">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+            </svg>
+        </button>
+    </div>
+</div>

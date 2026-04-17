@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notre Équipe - INFOCLUB</title>
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .team-header {
+      padding: 6rem 0 3rem;
+      text-align: center;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .team-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .member-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+    }
+
+    .member-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .member-role {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .member-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      color: white;
+      transform: rotate(360deg);
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--accent);
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="max-width">
+      <div class="team-header">
+        <span class="section-tag">Bureau Exécutif 2025-2026</span>
+        <h1 style="font-size: 3.5rem; font-weight: 900; letter-spacing: -0.02em;">Rencontrez les Visionnaires</h1>
+        <p style="color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 1rem auto;">
+          Les leaders passionnés qui guident le Club Génie Informatique vers l'excellence technologique et l'innovation.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Président -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-crown"></i></div>
+          <div class="member-name">Mekrane Bahae Eddine</div>
+          <div class="member-role">Président</div>
+          <div class="member-socials">
+            <a href="https://linkedin.com/in/bahae-eddine-mekrane-0938122b1" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Vice Président -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-star"></i></div>
+          <div class="member-name">Izelgue Malika</div>
+          <div class="member-role">Vice Présidente</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/malika-izelgue-3b8015319" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Secretaire General -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-feather-alt"></i></div>
+          <div class="member-name">Tifawt Ziam</div>
+          <div class="member-role">Secrétaire Générale</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/tifawt-ziam-032034318" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Competition -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-trophy"></i></div>
+          <div class="member-name">Tabati Zakaria</div>
+          <div class="member-role">Head of Competition</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/zakariatabati" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Training I -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="member-name">Berrada Sara</div>
+          <div class="member-role">Head of Training I</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/sara-berrada-034686320" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Training II -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-laptop-code"></i></div>
+          <div class="member-name">Ait Lfakir Nassima</div>
+          <div class="member-role">Head of Training II</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/nassima-ait-lfakir-4b2a45303" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Projects I -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-project-diagram"></i></div>
+          <div class="member-name">Izmaoun Amine</div>
+          <div class="member-role">Head of Projects I</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/amine-izmaoun-5ab61232a/" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Projects II -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-code"></i></div>
+          <div class="member-name">El Idrissi Abdellah</div>
+          <div class="member-role">Head of Projects II</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/abdellah-elidrissi" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Events -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-calendar-check"></i></div>
+          <div class="member-name">Darhmouaoui Aya</div>
+          <div class="member-role">Head of Events</div>
+          <div class="member-socials">
+            <a href="#" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Media -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-camera-retro"></i></div>
+          <div class="member-name">El Ahmadi Hiba</div>
+          <div class="member-role">Head of Design & Media</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/hiba-el-ahmadi-908271370" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Sponsoring -->
+        <div class="team-card">
+          <div class="member-avatar"><i class="fas fa-handshake"></i></div>
+          <div class="member-name">Boulaarab Soufiane</div>
+          <div class="member-role">Head of Sponsoring</div>
+          <div class="member-socials">
+            <a href="https://www.linkedin.com/in/soufiane-boulaarab-853651356" class="social-link" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="text-align: center; margin: 6rem 0; padding: 4rem; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);">
+        <h2 style="margin-bottom: 1rem;">Menteurs & Staff Honorifique</h2>
+        <p style="color: var(--muted); max-width: 800px; margin: 0 auto; line-height: 1.8;">
+          Un merci spécial à <strong>Abdelghani Bensalih, Mohamed Aymane Bouhmouch, Abla Sarir, Salma Maskahi, Zakaria
+            Zoulati,</strong> et <strong>Kartik Agrawal</strong> pour leur soutien inestimable en tant que mentors et
+          problem-setters.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <div id="chatbot-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+
+</html>
