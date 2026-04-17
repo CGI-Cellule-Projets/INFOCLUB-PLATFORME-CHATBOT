@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+pymysql
+cryptography
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
+python-dotenv
+langchain
+langchain-google-genai
+langchain-community
+faiss-cpu
+pypdf
+beautifulsoup4
