@@ -37,7 +37,8 @@ os.makedirs("uploads", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 # Serve frontend files
-frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend")
+frontend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend"))
+print(f"[DEBUG] Serving frontend from: {frontend_path}")
 app.mount("/site", StaticFiles(directory=frontend_path, html=True), name="site")
 
 # Register all routers
@@ -49,6 +50,8 @@ app.include_router(chatbot.router)
 app.include_router(media.router)
 
 
+from fastapi.responses import RedirectResponse
+
 @app.get("/", tags=["Root"])
 def root():
-    return {"message": "Welcome to the Club API 🎓 — visit /docs for the full API"}
+    return RedirectResponse(url="/site/index.html")
